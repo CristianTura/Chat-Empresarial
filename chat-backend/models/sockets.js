@@ -28,22 +28,13 @@ class Sockets {
             // Join the user to a socket.io room
             socket.join(uid); // uid es la sala en donde se une el usuario para enviar un mensaje, en este se crea con el uid de mongo
 
-            // TODO: Validate JWT
-            // If token is not valid, disconnect
-            //TODO: Know that users is active through the UID
-            // issue which users are connected
             this.io.emit("lista-usuarios", await getUsers());
 
-            // TODO: Socket join, uid
-            // TODO: Listen when the client sends a message
             socket.emit("mensaje-personal", async (payload) => {
                 const message = await recordMessage(payload);
-                console.log(message);
+                this.io.to(payload.to).emit("mensaje-personal", mensaje);
+                this.io.to(payload.from).emit("mensaje-personal", mensaje);
             });
-
-            //TODO: Disconnect
-            //mark in the database that the user was disconnected
-            //TODO: Issue everyone of the connected users
 
             socket.on("disconnect", async () => {
                 await userDisconnect(uid);
