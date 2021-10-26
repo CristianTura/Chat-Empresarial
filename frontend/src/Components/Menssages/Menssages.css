@@ -1,0 +1,97 @@
+.menssages{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    background-color: #F6F7F9;
+}
+.menssage_close{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    background-color:#F6F7F9 ;
+}
+.menssage_close>img{
+    margin: 6% 8%;
+}
+.complete{
+    width: 100%;
+    height: 77%;
+    margin-top: 23%;
+    overflow-y: scroll;
+
+    
+}
+.mesages_int{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    background-color: #EFF5F5;
+    margin-left: 5%;
+    padding: 4%;
+    border-radius: 50px;
+}
+.menssages_in{
+    display: flex;
+    align-items: center;
+    margin-left:10%;
+}
+.menssages_in>img{
+    width: 70%;
+}
+.messages_recieve{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.messages_recieve>p{
+    font-size:5vw;
+}
+.complete>span{
+    margin-left: 10%;
+    font-size: 4vw;
+    color: #B0B6C3;
+}
+.time_out{
+    margin-top: 2%;
+    margin-left: 50%;
+    font-size: 4vw;
+    left:15%;
+    color: #B0B6C3;
+}
+
+.mensages_out{
+    background-color: #1B8271;
+    width: 80%;
+    margin:5% 0;
+    margin-left: 10%;
+    padding: 10px;
+    border-radius:50px;
+}
+/* //boton de enviare */
+.send{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    position: fixed;
+    background-color: #F6F7F9;
+}
+.send>input{
+    width: 70%;
+    padding: 5px;
+    border: none;
+    border-radius: 50px;
+}
+.send>button{
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+}
