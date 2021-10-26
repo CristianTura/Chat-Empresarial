@@ -13,26 +13,26 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
 
-        // Conectar a DB
+        // Connect to DB
         dbConnection();
 
         // Http server
         this.server = http.createServer(this.app);
 
-        // Configuraciones de sockets
+        // Setting of sockets
         this.io = socketio(this.server, {
-            /* configuraciones */
+            /* setting */
         });
     }
 
     middlewares() {
-        // Desplegar el directorio público
+        // Deploy the public directory
         this.app.use(express.static(path.resolve(__dirname, "../public")));
 
         // CORS
         this.app.use(cors());
 
-        // Parseo del body
+        // Parseo of body
         this.app.use(express.json());
 
         // API End Points
@@ -40,19 +40,18 @@ class Server {
         this.app.use("/api/mensajes", require("../router/mensajes"));
     }
 
-    // Esta configuración se puede tener aquí o como propieda de clase
     configurarSockets() {
         new Sockets(this.io);
     }
 
     execute() {
-        // Inicializar Middlewares
+        // Start Middlewares
         this.middlewares();
 
-        // Inicializar sockets
+        // Start sockets
         this.configurarSockets();
 
-        // Inicializar Server
+        // Start Server
         this.server.listen(this.port, () => {
             console.log("Server corriendo en puerto:", this.port);
         });

@@ -4,21 +4,21 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
 
-// Controladores
+// Controllers
 const { createUser, login, renewToken } = require("../controllers/auth");
 const { validarCampos } = require("../middlewares/validar-campos");
 const { validarJWT } = require("../middlewares/validar-jwt");
 
 const router = Router();
 
-// Crear nuevos usuarios
+// Create new users
 router.post(
     "/new",
     [
         check("name", "El nombre es obligatorio").not().isEmpty(),
         check("password", "El password es obligatorio").not().isEmpty(),
         check("email", "El email es obligatorio").isEmail(),
-        // check("typeUser", "El tipo de usuario es obligatorio").not.isEmpty(),
+        check("typeUser", "El tipo de usuario es obligatorio").not().isEmpty(),
         validarCampos,
     ],
     createUser
@@ -35,7 +35,7 @@ router.post(
     login
 );
 
-// Revalidar Token
+// Revalidate Token
 router.get("/renew", validarJWT, renewToken);
 
 module.exports = router;
